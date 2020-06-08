@@ -1,10 +1,12 @@
 package com.CarnivalAutomation.Pages;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
 
 public class BasePage {
 
@@ -45,7 +47,43 @@ public class BasePage {
         }
     }
 
-    public void implicitWaitInSeconds(long timeOut){
-        driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
+    public void clickElement(WebElement clickableElement) {
+        wait.until(ExpectedConditions.visibilityOf(clickableElement));
+        clickableElement.click();
+    }
+
+    public void clickElement(WebElement clickableElement, int timeOut) {
+        WebDriverWait wait = new WebDriverWait(driver, timeOut);
+
+        try {
+            wait.until(ExpectedConditions.visibilityOf(clickableElement));
+            clickableElement.click();
+        }catch (TimeoutException ignored) {
+        } catch (org.openqa.selenium.StaleElementReferenceException ignored) {
+            System.err.println("Page.isElementVisible: StaleElementException caught" );
+        } catch (Exception error) {
+            System.err.println("Page.isElementVisible: Exception caught "+error.getMessage() );
+        }
+    }
+    public void explicitWaitInSeconds(double seconds){
+        try {
+            Thread.sleep((int)(seconds * 1000));
+        } catch (InterruptedException ignored) {}
+    }
+
+    public boolean isElementVisible(WebElement element, int timeOutInSeconds){
+        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+        try {
+            wait.until(ExpectedConditions.visibilityOf(element));
+            return true;
+        } catch (TimeoutException ignored) {
+            return false;
+        } catch (org.openqa.selenium.StaleElementReferenceException ignored) {
+            System.err.println("Page.isElementVisible: StaleElementException caught" );
+            return false;
+        } catch (Exception error) {
+            System.err.println("Page.isElementVisible: Exception caught "+error.getMessage() );
+            return false;
+        }
     }
 }

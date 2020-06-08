@@ -29,7 +29,7 @@ public class Driver {
                     e.printStackTrace();
                 }
             case "firefox":
-                System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver");
+                System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriverMac");
                 driver = new FirefoxDriver();
                 break;
             case "chrome":
