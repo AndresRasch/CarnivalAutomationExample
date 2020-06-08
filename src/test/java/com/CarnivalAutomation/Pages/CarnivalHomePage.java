@@ -36,6 +36,14 @@ public class CarnivalHomePage extends BasePage {
     @FindBy(css ="div.vifp-close")
     private WebElement popUpCloseButton;
 
+    /**
+     *Method to search a sail cruise
+     *
+     * @param departurePort
+     * @param duration
+     *
+     * @return instance of SearchSailResultPage page object
+     */
     public SearchSailResultPage searchCruiseSail(String departurePort, String duration){
         clickElement(destinationTab);
         getWait().until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfAllElements(tabOptions)));
@@ -54,6 +62,9 @@ public class CarnivalHomePage extends BasePage {
         return new SearchSailResultPage(getDriver());
     }
 
+    /**
+     * Method to dismiss initial create account pop up
+     */
     public void dismissPopUp() {
         new Actions(getDriver()).moveByOffset(0, 0).click().build().perform();
     }

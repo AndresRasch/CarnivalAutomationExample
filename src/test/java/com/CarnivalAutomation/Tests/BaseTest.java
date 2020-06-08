@@ -26,6 +26,11 @@ public class BaseTest {
         }
     }
 
+    /**
+     * get initial home page
+     *
+     * @return  instance of CarnivalHomePage page object
+     */
     public CarnivalHomePage getHomePage(){
         return homePage;
     }

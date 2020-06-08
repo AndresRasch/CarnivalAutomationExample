@@ -49,15 +49,29 @@ public class BookingPage extends BasePage{
     private WebElement vacationGuaranteeDialog;
 
 
-
+    /**
+     * Method to check if booking summary is displayed
+     *
+     * @return true if it is displayed
+     */
     public boolean isBookingSummaryVisible(){
         return isElementVisible(bookingSummary,5);
     }
 
+    /**
+     * Method to check if booking date is displayed
+     *
+     * @return true if it is displayed
+     */
     public boolean isBookingDateVisible(){
         return isElementVisible(bookingDate,5);
     }
 
+    /**
+     * Method to check if price guarantee dialog is displayed
+     *
+     * @return true if it is displayed
+     */
     public boolean isPriceGuaranteeDialogVisible(){
         clickElement(priceGuaranteeButton);
         explicitWaitInSeconds(2);
@@ -66,6 +80,11 @@ public class BookingPage extends BasePage{
         return isVisible;
     }
 
+    /**
+     * Method to check if vacation guarantee dialog is displayed
+     *
+     * @return true if it is displayed
+     */
     public boolean isVacationGuaranteeDialogVisible(){
         clickElement(vacationGuaranteeButton);
         explicitWaitInSeconds(2);

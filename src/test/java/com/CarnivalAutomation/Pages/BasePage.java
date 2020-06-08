@@ -47,11 +47,22 @@ public class BasePage {
         }
     }
 
+    /**
+     * Click on a web element
+     *
+     * @param clickableElement
+     */
     public void clickElement(WebElement clickableElement) {
         wait.until(ExpectedConditions.visibilityOf(clickableElement));
         clickableElement.click();
     }
 
+    /**
+     * Click on a web element using a time out
+     *
+     * @param clickableElement
+     * @param timeOut
+     */
     public void clickElement(WebElement clickableElement, int timeOut) {
         WebDriverWait wait = new WebDriverWait(driver, timeOut);
 
@@ -65,12 +76,26 @@ public class BasePage {
             System.err.println("Page.isElementVisible: Exception caught "+error.getMessage() );
         }
     }
+
+    /**
+     * Explicit wait in seconds
+     *
+     * @param seconds
+     */
     public void explicitWaitInSeconds(double seconds){
         try {
             Thread.sleep((int)(seconds * 1000));
         } catch (InterruptedException ignored) {}
     }
 
+    /**
+     * Wait for element presence using a time out
+     *
+     * @param element
+     * @param timeOutInSeconds
+     *
+     * @return true if is visible
+     */
     public boolean isElementVisible(WebElement element, int timeOutInSeconds){
         WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
         try {

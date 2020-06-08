@@ -31,20 +31,40 @@ public class SearchSailResultPage extends BasePage {
     private List<WebElement> cruisesLearnMoreButtons;
 
 
+    /**
+     * Method to check if pricing filter tab is displayed
+     *
+     * @return true if it is displayed
+     */
     public boolean isPricingButtonVisible(){
        return isElementVisible(pricingTab,5);
     }
 
+    /**
+     * Method to check if min price filter is displayed by default
+     *
+     * @return true if it is displayed
+     */
     public boolean isMinPricingValueSelected(){
         clickElement(pricingTab);
         return isElementVisible(minPriceOption,5);
     }
 
+    /**
+     * Method to check if grid view is enabled by default
+     *
+     * @return true if it is displayed
+     */
     public boolean isGridViewSelected(){
         getWait().until(ExpectedConditions.visibilityOf(gridViewButton));
         return gridViewButton.isEnabled();
     }
 
+    /**
+     * Method to select a sail cruise by index
+     *
+     * @return a instance of SelectedCruisePage page object
+     */
     public SelectedCruisePage selectCruise(int option){
         getWait().until(ExpectedConditions.refreshed(
                 ExpectedConditions.visibilityOfAllElements(cruisesLearnMoreButtons)));
