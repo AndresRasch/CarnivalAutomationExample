@@ -41,6 +41,7 @@ public class SelectedCruisePage extends BasePage {
 
     public BookingPage tapOnBookingButton(){
         clickElement(bookingButton);
+        explicitWaitInSeconds(3);
         return new BookingPage(getDriver());
     }
 }
