@@ -1,5 +1,6 @@
 package com.CarnivalAutomation.Tests;
 
+import com.CarnivalAutomation.Pages.BookingPage;
 import com.CarnivalAutomation.Pages.CarnivalHomePage;
 import com.CarnivalAutomation.Pages.SearchSailResultPage;
 import com.CarnivalAutomation.Pages.SelectedCruisePage;
@@ -11,6 +12,7 @@ public class CarnivalTests extends BaseTest{
     private CarnivalHomePage carnivalHomePage;
     private SearchSailResultPage searchSailResultPage;
     private SelectedCruisePage selectedCruisePage;
+    private BookingPage bookingPage;
 
 
     @Test(description = "CAR001 - Search a single cruise selecting an arrival port and a duration value", priority = 1)
@@ -30,5 +32,11 @@ public class CarnivalTests extends BaseTest{
        Assert.assertTrue(selectedCruisePage.isBookNowButtonVisible());
        Assert.assertTrue(selectedCruisePage.isLearnMoreButtonVisibleInAllDays());
        Assert.assertTrue(selectedCruisePage.isItineraryTabVisible());
+    }
+
+    @Test(description = "CAR003 - Book a sail cruise",priority = 2)
+    public void bookACruise(){
+        bookingPage = selectedCruisePage.clickOnBookingButton();
+
     }
 }
