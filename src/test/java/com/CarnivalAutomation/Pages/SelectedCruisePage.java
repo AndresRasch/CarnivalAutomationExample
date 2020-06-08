@@ -20,7 +20,7 @@ public class SelectedCruisePage extends BasePage {
     @FindBy(id = "sm-itin")
     private WebElement itineraryTab;
 
-    @FindBy(id = "sm-booking-btn")
+    @FindBy(css = "#sm-booking-btn booking-button")
     private WebElement bookingButton;
 
     @FindBy(css = "div.tile .about-cta")
@@ -36,10 +36,10 @@ public class SelectedCruisePage extends BasePage {
     }
 
     public boolean isBookNowButtonVisible(){
-        return isElementVisible(bookingButton,5);
+        return isElementVisible(bookingButton,10);
     }
 
-    public BookingPage clickOnBookingButton(){
+    public BookingPage tapOnBookingButton(){
         clickElement(bookingButton);
         return new BookingPage(getDriver());
     }

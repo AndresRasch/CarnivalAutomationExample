@@ -29,14 +29,17 @@ public class CarnivalTests extends BaseTest{
     @Test(description = "CAR002 - Select single cruise from search results",priority = 2)
     public void selectCruiseFromSearchResult(){
        selectedCruisePage = searchSailResultPage.selectCruise(0);
-       Assert.assertTrue(selectedCruisePage.isBookNowButtonVisible());
        Assert.assertTrue(selectedCruisePage.isLearnMoreButtonVisibleInAllDays());
        Assert.assertTrue(selectedCruisePage.isItineraryTabVisible());
+       Assert.assertTrue(selectedCruisePage.isBookNowButtonVisible());
+       bookingPage = selectedCruisePage.tapOnBookingButton();
+
     }
 
-    @Test(description = "CAR003 - Book a sail cruise",priority = 2)
+    @Test(description = "CAR003 - Book a sail cruise",priority = 3)
     public void bookACruise(){
-        bookingPage = selectedCruisePage.clickOnBookingButton();
-
+        Assert.assertTrue(bookingPage.isBookingDateVisible(),"Booking date is displayed");
+        Assert.assertTrue(bookingPage.isBookingProcessSidebarVisible(),"Booking process sidebar is displayed");
+        Assert.assertTrue(bookingPage.isBookingSummaryVisible(),"Booking summary is displayed");
     }
 }
