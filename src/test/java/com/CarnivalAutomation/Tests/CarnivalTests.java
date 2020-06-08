@@ -2,7 +2,7 @@ package com.CarnivalAutomation.Tests;
 
 import com.CarnivalAutomation.Pages.CarnivalHomePage;
 import com.CarnivalAutomation.Pages.SearchSailResultPage;
-import org.junit.BeforeClass;
+import com.CarnivalAutomation.Pages.SelectedCruisePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,6 +10,7 @@ public class CarnivalTests extends BaseTest{
 
     private CarnivalHomePage carnivalHomePage;
     private SearchSailResultPage searchSailResultPage;
+    private SelectedCruisePage selectedCruisePage;
 
 
     @Test(description = "CAR001 - Search a single cruise selecting an arrival port and a duration value", priority = 1)
@@ -21,6 +22,13 @@ public class CarnivalTests extends BaseTest{
         Assert.assertTrue(searchSailResultPage.isGridViewSelected(),"Default grid view is selected");
         Assert.assertTrue(searchSailResultPage.isPricingButtonVisible(),"Pricing tab filter is displayed");
         Assert.assertTrue(searchSailResultPage.isMinPricingValueSelected(),"Min price filter is displayed");
+    }
 
+    @Test(description = "CAR002 - Select single cruise from search results",priority = 2)
+    public void selectCruiseFromSearchResult(){
+       selectedCruisePage = searchSailResultPage.selectCruise(0);
+       Assert.assertTrue(selectedCruisePage.isBookNowButtonVisible());
+       Assert.assertTrue(selectedCruisePage.isLearnMoreButtonVisibleInAllDays());
+       Assert.assertTrue(selectedCruisePage.isItineraryTabVisible());
     }
 }

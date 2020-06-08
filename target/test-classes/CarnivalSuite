@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Carnival Suite" verbose="1">
+    <test name="Carnival Tests">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="url" value="https://www.carnival.com/"/>
+        <classes>
+            <class name="com.CarnivalAutomation.Tests.CarnivalTests"/>
+        </classes>
+    </test>
+</suite>
