@@ -14,29 +14,38 @@ public class BookingPage extends BasePage{
         super(pDriver);
     }
 
-    @FindBy(css = "div.dest div.va-content")
-    private WebElement bookingSummary;
-
-    @FindBy(css = "div.dest div.date")
+    @FindBy(css = "div[data-testid=\"itinDates\"]")
+    //@FindBy(css = "div.dest div.date")
     private WebElement bookingDate;
 
-    @FindBy(css = "div.booking-engine-navigation")
-    private WebElement bookingProcessSidebar;
+    @FindBy(css = "div[data-testid=\"itinShip\"]")
+    //@FindBy(css = "div.booking-engine-navigation")
+    private WebElement bookingSummary;
 
-    @FindBy(id = "LowestPriceDialogTitle")
+    @FindBy(css = "h1[data-testid=\"lowestPriceHeader\"]")
+    //@FindBy(css = "LowestPriceDialogTitle")
     private WebElement priceGuaranteeDialog;
 
-    @FindBy(css = "div.white-ribbon ul li:first-child")
-    private WebElement priceGuaranteeButton;
-
-
-    @FindBy(css = "div.white-ribbon ul li:nth-child(2)")
+    @FindBy(css = "button[data-testid=\"greatVacation\"]")
+    //@FindBy(css = "div.white-ribbon ul li:first-child")
     private WebElement vacationGuaranteeButton;
 
-    @FindBy(css = "div.modal-footer button")
-    private WebElement closeDialogButton;
 
-    @FindBy(id = "GreatVacationGuaranteeDialogTitle")
+    @FindBy(css = "button[data-testid=\"lowestPrice\"]")
+    //@FindBy(css = "div.white-ribbon ul li:nth-child(2)")
+    private WebElement priceGuaranteeButton;
+
+    @FindBy(css = "button[data-testid=\"greatVacationCloseButton\"]")
+    //@FindBy(css = "div.modal-footer button")
+    private WebElement closeDialogVacationButton;
+
+    @FindBy(css = "button[data-testid=\"lowestPriceCloseButton\"]")
+    //@FindBy(css = "div.modal-footer button")
+    private WebElement closeDialogPriceButton;
+
+
+    @FindBy(css = "h1[data-testid=\"greatVacationHeader\"]")
+    //@FindBy(id = "GreatVacationGuaranteeDialogTitle")
     private WebElement vacationGuaranteeDialog;
 
 
@@ -49,22 +58,19 @@ public class BookingPage extends BasePage{
         return isElementVisible(bookingDate,5);
     }
 
-    public boolean isBookingProcessSidebarVisible(){
-        return isElementVisible(bookingProcessSidebar,5);
-    }
-
     public boolean isPriceGuaranteeDialogVisible(){
         clickElement(priceGuaranteeButton);
+        explicitWaitInSeconds(2);
         boolean isVisible = isElementVisible(priceGuaranteeDialog,10);
-        clickElement(closeDialogButton);
+        clickElement(closeDialogPriceButton);
         return isVisible;
     }
 
     public boolean isVacationGuaranteeDialogVisible(){
-        explicitWaitInSeconds(3);
         clickElement(vacationGuaranteeButton);
+        explicitWaitInSeconds(2);
         boolean isVisible = isElementVisible(vacationGuaranteeDialog,10);
-        clickElement(closeDialogButton);
+        clickElement(closeDialogVacationButton);
         return isVisible;
     }
 }

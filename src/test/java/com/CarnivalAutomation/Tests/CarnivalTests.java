@@ -35,11 +35,10 @@ public class CarnivalTests extends BaseTest{
        bookingPage = selectedCruisePage.tapOnBookingButton();
 
     }
-    /*
+
     @Test(description = "CAR003 - Book a sail cruise",priority = 3)
     public void bookACruise(){
         Assert.assertTrue(bookingPage.isBookingDateVisible(),"Booking date is displayed");
-        Assert.assertTrue(bookingPage.isBookingProcessSidebarVisible(),"Booking process sidebar is displayed");
         Assert.assertTrue(bookingPage.isBookingSummaryVisible(),"Booking summary is displayed");
     }
 
@@ -47,5 +46,5 @@ public class CarnivalTests extends BaseTest{
     public void verifyBookingSupportLinks(){
         Assert.assertTrue(bookingPage.isPriceGuaranteeDialogVisible(),"Price Guarantee pop up is displayed");
         Assert.assertTrue(bookingPage.isVacationGuaranteeDialogVisible(),"Vacation Guarantee pop up is displayed");
-    }*/
+    }
 }
